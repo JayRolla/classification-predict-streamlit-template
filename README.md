@@ -1,4 +1,4 @@
-# repository Information
+# Repository Information
 
 this repository contains a jupyter notebook, pickled model, readme_explore file. the programming langauage used is python 3 using comet_ml version control
 and streamlit for model deployment. all the files are from student team's work on classification using machine learning under the EXPLORE DATA SCIENCE ACADEMY 
@@ -28,3 +28,11 @@ for version control and collaboration we used github in conjuction with comet_ml
 
 we used streamlit to deploy our model, there is a REAME.MB file titled README_EXPLORE that explains and demonstrates how the model
 deployment process works and its requirements
+ 
+ ## Contributors
+the work was from a contributive collaboration from these team members
+Justice Oyemike
+David Odimegwu
+Rachael Njuguna
+Molapo Kgarose
+olamide oladipo
