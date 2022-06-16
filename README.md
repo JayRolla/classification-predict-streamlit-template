@@ -31,8 +31,13 @@ deployment process works and its requirements
  
  ## Contributors
 the work was from a contributive collaboration from these team members
+
 Justice Oyemike
+
 David Odimegwu
+
 Rachael Njuguna
+
 Molapo Kgarose
+
 olamide oladipo
