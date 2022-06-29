@@ -42,7 +42,7 @@ def main():
 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
-	st.title("Tweet Classifer")
+	st.title("Dolph Analytics App")
 	st.subheader("Climate change tweet classification")
 
 	# Creating sidebar with selection box -
@@ -54,7 +54,7 @@ def main():
 	if selection == "Information":
 		st.info("General Information")
 		# You can read a markdown file from supporting resources folder
-		st.markdown("Our team has the task of predicting whether a tweet supports, refutes, or is undecided about man-made climate change. Also, it can detect if a tweet was just a news item. I hope you do find it useful for your purposes.")
+		st.markdown("Our team has the task of predicting whether a tweet supports, refutes, or is undecided about man-made climate change. Also, it can detect if a tweet was just a news item.")
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
@@ -62,10 +62,34 @@ def main():
 
 	# Building out the predication page
 	if selection == "Prediction":
-		st.info("Prediction with ML Models. We are using two Models: Bagging Classifier and Logistic Regression")
+		st.info("Prediction with ML Models. We are using three models: LinearSVC, Bagging Classifier and Logistic Regression")
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","Type Here")
+		# first button, linear svc
+		if st.button("Classify With LinearSVC"):
+			# Transforming user input with vectorizer
+			vect_text = tweet_cv.transform([tweet_text]).toarray()
+			# Load your .pkl file with the model of your choice + make predictions
+			# Try loading in multiple models to give the user a choice
+			#predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
+			predictor = joblib.load(open(os.path.join("resources/linersvc.pkl"),"rb"))
+			prediction = predictor.predict(vect_text)
 
+			# When model has successfully run, will print prediction
+			# You can use a dictionary or similar structure to make this output
+			# more human interpretable.
+			if prediction == 1: 
+				result = "1: Tweet believes in man-made Climate Change."
+			elif prediction	== 2:
+				result = "2: Tweet is a news item."
+			elif prediction == 0:
+				result = "0: Tweet neither supports or refutes believe in climate change."
+			else:
+				result = "-1: Tweet does not believe in man-made climate change."
+			st.success("Text Categorized as {}".format(result))
+
+
+		# second button, Bagging Classifier
 		if st.button("Classify With Bagging Classifier"):
 			# Transforming user input with vectorizer
 			vect_text = tweet_cv.transform([tweet_text]).toarray()
@@ -88,7 +112,7 @@ def main():
 				result = "-1: Tweet does not believe in man-made climate change."
 			st.success("Text Categorized as {}".format(result))
 		
-		# the second button, logistic regression button	
+		# the third button, logistic regression button	
 		if st.button("Classify With Resampled Logistic Regression"):
 			# Transforming user input with vectorizer
 			vect_text = tweet_cv.transform([tweet_text]).toarray()
