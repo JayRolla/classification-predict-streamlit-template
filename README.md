@@ -1,6 +1,6 @@
 # Repository Information
 
-This repository contains a jupyter notebook, pickled model, readme_explore file. the programming langauage used is python 3 using comet_ml version control
+This repository contains a jupyter notebook, pickled model, readme_explore file, a kaggle csv file,training set,test set and a pickled lsvc model. the programming langauage used is python 3 using comet_ml version control
 and streamlit for model deployment. all the files are from student team's work on classification using machine learning under the EXPLORE DATA SCIENCE ACADEMY 
 
 # NLP Text Classification Modelling
