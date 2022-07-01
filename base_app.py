@@ -55,11 +55,22 @@ def main():
 		st.info("General Information")
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Our team has the task of predicting whether a tweet supports, refutes, or is undecided about man-made climate change. Also, it can detect if a tweet was just a news item.")
-
+		st.markdown("Members of the Dolph Analytics team include Justice Oyemike (Business Analyst), Molapo Kgarose (Data Scientist), Olamide Oladipo (Machine Learning Engineer), David Odimegwu (Product Manager), and Rachael Njuguna (Software Engineer). ")
+		
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw[['sentiment', 'message']]) # will write the df to the page
 
+		st.subheader("Some EDA of the Data")
+		st.markdown("The data is a multi-class target variables with 4 labels for sentiments. The labels are 1 for Pro or supports climate change, 2 for New tweet, 0 for undecided about climate change and -1 for denies climate change. ")
+		st.markdown("There was noticeable class imbalance with the 1 (Pro) label having higher data points. The image below illustrates this.")	
+		st.image("images/sentiment_labels.png", caption="Count of labels in the dataset")
+		st.markdown("We also found the hashtags very informative. There were distinctive hashtags for each label. We noticed that some hashtags were generalized across all the labels. Examples were climate, climatechange, and globalwarming. So we removed these because they would skew the modeling process.")
+		st.markdown("Here are some visualizations of the hashtags we found insightful in each label.")
+		st.image("images/pro_hashtags.png", caption="Top hashtags for the Pro (1) Label")
+		st.image("images/anti_hashtags.png", caption="Top hashtags used by people against climate change. Anti (-1) group.")
+		st.image("images/neutral_hashtags.png", caption="Top hashtags used by people undecided about climate change. Neutral (0) group.")
+		st.image("images/news_hashtags.png", caption="Top hashtags used when tweeting about a news item. News (2) Label.")
 	# Building out the predication page
 	if selection == "Prediction":
 		st.info("Prediction with ML Models. We are using three models: LinearSVC, Bagging Classifier and Logistic Regression")
